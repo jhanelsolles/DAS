@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 300% 300%;
+            animation: gradientShift 5s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+        }
+
+        .birthday-title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+            animation: bounceIn 2s ease-out, goldGlow 4s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        @keyframes goldGlow {
+            0%, 100% { 
+                color: #fff;
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+            }
+            50% { 
+                color: #ffd700;
+                text-shadow: 0 0 20px #fff, 0 0 30px #ffd700, 0 0 40px #ffd700;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 1.8rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin: 2rem 0;
+            animation: fadeInUp 2.5s ease-out;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cake {
+            font-size: 8rem;
+            margin: 2rem 0;
+            animation: cake-dance 2s ease-in-out infinite alternate;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cake:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        @keyframes cake-dance {
+            0% { transform: translateY(0px) rotate(-5deg); }
+            100% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(odd) {
+            animation-delay: -1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ffd700, #ff8c00, #dc143c);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0.5rem;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 25px rgba(255,215,0,0.4);
+            background: linear-gradient(45deg, #ff8c00, #ffd700, #ff6347);
+        }
+
+        .special-message-btn {
+            background: linear-gradient(45deg, #8a2be2, #4b0082, #9400d3);
+            font-size: 1.2rem;
+            padding: 1.2rem 2.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .special-message-btn:hover {
+            background: linear-gradient(45deg, #9400d3, #8a2be2, #ba55d3);
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            color: gold;
+            font-size: 1.5rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        .name-input {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            margin: 1rem;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .personal-message {
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin: 2rem 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff6b6b, 0 0 40px #ff6b6b;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #4ecdc4, 0 0 40px #4ecdc4, 0 0 50px #4ecdc4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .birthday-title { font-size: 2.5rem; }
+            .cake { font-size: 5rem; }
+            .message { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="birthday-title">¡Feliz Cumpleaños Alexis!</h1>
+        
+        <div class="message">
+            🔥 Un año más de experiencias y logros 🔥
+        </div>
+
+        <div class="cake" onclick="celebrar()">🎂</div>
+
+        <button class="button special-message-btn" onclick="mostrarMensajeEspecial()">💌 Mensaje Especial</button>
+        
+        <div id="mensajePersonal" class="personal-message" style="display: none;">
+            <p style="margin-bottom: 1rem; font-size: 2.2rem;">✨ Para ti, Alexis ✨</p>
+            <p style="font-size: 1.3rem; line-height: 1.7; max-width: 900px; margin: 0 auto; text-align: left; padding: 2.5rem; background: rgba(0,0,0,0.4); border-radius: 15px; backdrop-filter: blur(15px); border: 2px solid rgba(255,215,0,0.3);">
+                La verdad me hubiera encantado poder felicitarte en persona hoy, porque sí quería estar ahí contigo. Pero de todos modos lo hago por este medio. 
+                <br><br>
+                Sé que la vida a veces se pone dura y no siempre es fácil, pero también sé que todo se supera y que siempre hay razones para seguir adelante. 
+                <br><br>
+                La vida es una sola y hay que disfrutarla con todo lo bueno que venga y con la gente que te quiere. 
+                <br><br>
+                Te deseo lo mejor en este nuevo año, que tengas momentos lindos y mucha fuerza para todo lo que venga. 💪🎯
+            </p>
+        </div>
+
+        <div class="controls" style="margin-top: 2rem;">
+            <button class="button" onclick="celebrar()">🎉 Celebrar</button>
+            <button class="button" onclick="cambiarTema()">🎨 Cambiar Tema</button>
+            <button class="button" onclick="masEfectos()">⚡ Más Efectos</button>
+            <button class="button" onclick="modoBeast()">🔥 Modo Beast</button>
+        </div>
+        <button class="button" onclick="cambiarMusica()">🎵 Cambiar Ritmo</button>
+        <button class="button" onclick="masConfetti()">🎊 Más Confetti</button>
+    </div>
+
+    <script>
+        let temaActual = 0;
+        const coloresConfetti = ['#ffd700', '#ff8c00', '#dc143c', '#8a2be2', '#4169e1', '#00ced1', '#32cd32'];
+        const temasBackground = [
+            'linear-gradient(45deg, #1a1a2e, #16213e, #0f3460, #533483)',
+            'linear-gradient(45deg, #2c1810, #8b4513, #a0522d, #cd853f)',
+            'linear-gradient(45deg, #0c0c0c, #1a1a1a, #2d2d2d, #4a4a4a)',
+            'linear-gradient(45deg, #1e3c72, #2a5298, #3498db, #5dade2)'
+        ];
+
+        function mostrarMensajeEspecial() {
+            const mensajeDiv = document.getElementById('mensajePersonal');
+            
+            if(mensajeDiv.style.display === 'none') {
+                mensajeDiv.style.display = 'block';
+                mensajeDiv.style.animation = 'fadeInUp 1s ease-out';
+                
+                // Efectos especiales al mostrar el mensaje
+                for(let i = 0; i < 30; i++) {
+                    setTimeout(() => crearConfetti(), i * 100);
+                }
+                crearCorazones();
+            } else {
+                mensajeDiv.style.display = 'none';
+            }
+        }
+
+        function crearCorazones() {
+            const corazones = ['💛', '🧡', '❤️', '💜', '💙'];
+            
+            for(let i = 0; i < 10; i++) {
+                const corazon = document.createElement('div');
+                corazon.className = 'balloon';
+                corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+                corazon.style.left = Math.random() * 90 + 'vw';
+                corazon.style.top = Math.random() * 80 + 'vh';
+                corazon.style.animationDelay = Math.random() * 2 + 's';
+                corazon.style.fontSize = '2rem';
+                document.body.appendChild(corazon);
+                
+                setTimeout(() => corazon.remove(), 6000);
+            }
+        }
+
+        function celebrar() {
+            // Crear confetti
+            for(let i = 0; i < 50; i++) {
+                crearConfetti();
+            }
+            
+            // Crear fuegos artificiales
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => crearFuegoArtificial(), i * 200);
+            }
+            
+            // Crear globos
+            crearGlobos();
+            
+            // Crear destellos
+            crearDestellos();
+            
+            // Mensaje personalizado
+            mostrarMensajePersonal();
+        }
+
+        function crearConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = coloresConfetti[Math.floor(Math.random() * coloresConfetti.length)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 5000);
+        }
+
+        function crearFuegoArtificial() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.top = Math.random() * 50 + 'vh';
+            firework.style.backgroundColor = coloresConfetti[Math.floor(Math.random() * coloresConfetti.length)];
+            document.body.appendChild(firework);
+            
+            setTimeout(() => firework.remove(), 1000);
+        }
+
+        function crearGlobos() {
+            const elementos = ['⚡', '🔥', '🎯', '💪', '🏆', '⭐', '🌟'];
+            
+            for(let i = 0; i < 8; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.textContent = elementos[Math.floor(Math.random() * elementos.length)];
+                balloon.style.left = Math.random() * 90 + 'vw';
+                balloon.style.top = Math.random() * 80 + 'vh';
+                balloon.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(balloon);
+                
+                setTimeout(() => balloon.remove(), 8000);
+            }
+        }
+
+        function crearDestellos() {
+            const sparkles = ['⚡', '⭐', '🌟', '💫', '🔥'];
+            
+            for(let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 4000);
+            }
+        }
+
+        function cambiarTema() {
+            temaActual = (temaActual + 1) % temasBackground.length;
+            document.body.style.background = temasBackground[temaActual];
+            document.body.style.backgroundSize = '300% 300%';
+            
+            // Efecto de cambio de tema
+            document.body.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                document.body.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function masEfectos() {
+            for(let i = 0; i < 80; i++) {
+                setTimeout(() => crearConfetti(), i * 50);
+            }
+            
+            for(let i = 0; i < 6; i++) {
+                setTimeout(() => crearFuegoArtificial(), i * 300);
+            }
+        }
+
+        function modoBeast() {
+            // Modo súper intenso
+            for(let i = 0; i < 150; i++) {
+                setTimeout(() => crearConfetti(), i * 30);
+            }
+            
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => crearFuegoArtificial(), i * 200);
+            }
+            
+            crearGlobos();
+            crearDestellos();
+            
+            // Cambio de tema automático
+            let cambios = 0;
+            const intervaloCambio = setInterval(() => {
+                cambiarTema();
+                cambios++;
+                if(cambios >= 4) {
+                    clearInterval(intervaloCambio);
+                }
+            }, 1000);
+        }
+
+        function mostrarMensajePersonal() {
+            // Función simplificada ya que ahora usamos mostrarMensajeEspecial()
+        }
+
+        // Animaciones automáticas
+        setInterval(() => {
+            if(Math.random() < 0.3) {
+                crearConfetti();
+            }
+        }, 1000);
+
+        // Efectos de mouse
+        document.addEventListener('mousemove', (e) => {
+            if(Math.random() < 0.1) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = '✨';
+                sparkle.style.position = 'absolute';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.color = 'gold';
+                sparkle.style.fontSize = '20px';
+                sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        // Mensaje de bienvenida personalizado para Alexis
+        setTimeout(() => {
+            alert('🎯 ¡Alexis, esta celebración épica es para ti! 🔥\n\n💪 Haz clic en "Mensaje Especial" para leer algo importante 💛');
+        }, 1500);
+    </script>
+</body>
+</html>
